@@ -64,12 +64,12 @@ class ProfileController extends Controller
         unset($profile_form['_token']);
         $profile->fill($profile_form)->save();
         
-        $profile_history = new ProfileHistory;
-        $profile_history->profile_id = $profile->id;
-        $profile_history->edited_at =Carbon::now();
-        $profile_history->save();
+        $profile_histories = new ProfileHistory;
+        $profile_histories->profile_id = $profile->id;
+        $profile_histories->edited_at =Carbon::now();
+        $profile_histories->save();
         
-        return redirect('admin/profile');
+        return redirect('admin/profile/');
     }
     
    public function delete(Request $request)
